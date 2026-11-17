@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Experimental ocular biomechanics – Arshia Valipour</title>
+<meta name="description" content="An experimental pipeline combining OCT imaging and nanoindentation to measure regional stiffness of the sclera.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="../index.html">Arshia Valipour</a>
+  <ul>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#projects">Projects</a></li>
+    <li><a href="../index.html#experience">Experience</a></li>
+    <li><a href="../index.html#education">Education</a></li>
+    <li><a href="../index.html#publications">Publications</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</div></nav>
+<main class="wrap">
+<header class="project-head">
+  <a class="back" href="../index.html#projects">← All projects</a>
+  <div class="kicker" style="color:var(--warm);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px">Research stay</div>
+  <h1>Experimental ocular biomechanics</h1>
+  <p class="context">Visiting research assistant · ARTORG Center for Biomedical Engineering Research, University of Bern (Prof. Philippe Büchler)</p>
+  <div class="chips"><span class="chip">Nanoindentation</span><span class="chip">OCT</span><span class="chip">Uniaxial tensile testing</span><span class="chip">Inflation testing</span><span class="chip">Soft-tissue biomechanics</span><span class="chip">CAD</span><span class="chip">3D printing</span></div>
+  <div class="meta"><div><b>Period</b>Jan 2026 – Jul 2026</div><div><b>Methods</b>Nanoindentation, OCT, tensile & inflation testing</div><div><b>Design</b>CAD, 3D printing</div></div>
+</header>
+<figure class="media diagram"><img src="../assets/img/ocular.png" alt="Eye cross-section with the anterior, mid and posterior scleral test regions between limbus and optic nerve head, under intraocular pressure (IOP)."><figcaption>Test regions: anterior, mid and posterior sclera between the limbus and the optic nerve head (ONH), with the eye under intraocular pressure (IOP).</figcaption></figure>
+<article class="prose">
+<h2>Scleral stiffness across the eye</h2>
+<p>An experimental pipeline was co-developed to measure the mechanical properties of the sclera systematically across the eye globe. The eye is kept fixed during testing by a custom holder, which was designed in CAD and prototyped by 3D printing. The region of interest is identified with optical coherence tomography (OCT), and the local properties are then measured by nanoindentation at different locations.</p><p>Because the forces and indentation depths are very small, the protocol was refined step by step until reproducible measurements were obtained, and clear regional differences in scleral stiffness were revealed. The results were presented as a poster at the SSBE Annual Meeting 2026.</p>
+<figure class="media"><img src="../assets/img/ocular-pipeline.jpg" alt="Experiment pipeline: sample preparation, OCT imaging and nanoindentation, with photos of the custom holder, OCT region identification, nnU-Net segmentation and nanoindentation." loading="lazy"><figcaption>The complete experiment pipeline: (I) sample preparation, (II) OCT imaging and (III) nanoindentation. Below: custom-made holder, region identification with OCT, nnU-Net segmentation and nanoindentation.</figcaption></figure>
+<div class="code-box"><span>📐</span><div><b>Open design files</b><br>The CAD files of the immersion fixture used for nanoindentation of whole ex vivo eyes and flat soft-tissue samples have been made openly available on Zenodo:<br>
+<span style="font-size:14.5px">Valipour, A., Frigelli, M., Kochetkova, T., Kreienbühl, R., Büchler, P., &amp; Ariza Gracia, M. Á. (2026). <i>Immersion fixture for nanoindentation of whole ex vivo eyes and flat soft-tissue samples: CAD design files</i> (Version 1.0) [Graphic]. Zenodo. <a href="https://doi.org/10.5281/zenodo.23920122">https://doi.org/10.5281/zenodo.23920122</a></span></div></div>
+</article>
+
+
+</main>
+<footer><div class="wrap">
+  <span>&copy; 2026 Arshia Valipour</span>
+  <span><a href="mailto:arshia.valipour@edu.ruhr-uni-bochum.de">Email</a> · <a href="https://www.linkedin.com/in/avalipour02">LinkedIn</a> · <a href="https://github.com/arshiavali">GitHub</a></span>
+</div></footer>
+<script>
+// Hide animation slots whose video file has not been added yet.
+document.querySelectorAll('figure.media video').forEach(function (v) {
+  v.addEventListener('error', function () { v.closest('figure').style.display = 'none'; });
+  if (v.error) v.closest('figure').style.display = 'none';
+});
+</script>
+</body>
+</html>

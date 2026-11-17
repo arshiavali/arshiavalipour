@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Out-of-plane deformation and failure of 3D cellulose fibre networks – Arshia Valipour</title>
+<meta name="description" content="A computational framework in Abaqus and Python that links fibre-bond properties to the out-of-plane fracture behaviour of paper.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="../index.html">Arshia Valipour</a>
+  <ul>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#projects">Projects</a></li>
+    <li><a href="../index.html#experience">Experience</a></li>
+    <li><a href="../index.html#education">Education</a></li>
+    <li><a href="../index.html#publications">Publications</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</div></nav>
+<main class="wrap">
+<header class="project-head">
+  <a class="back" href="../index.html#projects">← All projects</a>
+  <div class="kicker" style="color:var(--warm);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px">Master's thesis</div>
+  <h1>Out-of-plane deformation and failure of 3D cellulose fibre networks</h1>
+  <p class="context">Master's thesis · Chair of Computational Applied Mechanics, University of Wuppertal · co-supervised by the Chair of Mechanics – Materials Theory, Ruhr University Bochum</p>
+  <div class="chips"><span class="chip">Abaqus</span><span class="chip">Python scripting</span><span class="chip">Fibre networks</span><span class="chip">Cohesive interfaces</span><span class="chip">Multiscale</span><span class="chip">Fracture</span></div>
+  <div class="meta"><div><b>Period</b>Aug 2026 – Feb 2027</div><div><b>Tools</b>Abaqus/Explicit, Python</div><div><b>Methods</b>Fibre networks, cohesive interfaces, multiscale</div><div><b>Validation</b>Experimental results</div></div>
+</header>
+<figure class="media"><img src="../assets/img/thesis.png" alt="Simulation pipeline: network generation, compaction, boundary conditions and post-processing." loading="lazy"><figcaption>Simulation pipeline: network generation, compaction, boundary conditions and post-processing.</figcaption></figure>
+<article class="prose">
+<h2>Motivation</h2>
+<p>Cellulose-based materials such as paper and paperboard are increasingly used in sustainable technologies thanks to their renewable origin and biodegradability. Their in-plane mechanics have been studied extensively, but the out-of-plane response, which is important in forming processes, is much less understood.</p>
+<h2>Approach</h2>
+<ul>
+<li><b>Network generation:</b> fibres are sampled from statistical distributions of length, width, wall thickness, microfibril angle and orientation, deposited layer by layer until a target grammage is reached, and then compacted in Abaqus/Explicit.</li>
+<li><b>Mechanical analysis:</b> the compacted geometry is imported stress-free; the bottom plate is clamped and the top plate is displaced through the thickness (out-of-plane tension) under displacement control.</li>
+<li><b>Fibre bonds</b> are modelled with cohesive interfaces, so that damage can be initiated either in the bonds or in the fibres.</li>
+<li><b>Automation:</b> the whole pipeline is scripted in Python, making parameter studies systematic and reproducible.</li>
+</ul>
+<h2>Research question</h2>
+<p>Is global damage driven by bond failure or by fibre failure, and how is damage propagated through the network? Microstructural cohesive properties are to be related to macroscopic quantities such as fracture toughness.</p>
+</article>
+<figure class="media"><video src="../assets/video/thesis-tension.mp4" autoplay muted loop playsinline controls preload="metadata"></video><figcaption>Animation: out-of-plane tension test with bond damage evolution.</figcaption></figure>
+<div class="code-box"><span>🔒</span><div><b>Code</b><br>Thesis code is not public yet. Selected scripts may be shared after submission.</div></div>
+</main>
+<footer><div class="wrap">
+  <span>&copy; 2026 Arshia Valipour</span>
+  <span><a href="mailto:arshia.valipour@edu.ruhr-uni-bochum.de">Email</a> · <a href="https://www.linkedin.com/in/avalipour02">LinkedIn</a> · <a href="https://github.com/arshiavali">GitHub</a></span>
+</div></footer>
+<script>
+// Hide animation slots whose video file has not been added yet.
+document.querySelectorAll('figure.media video').forEach(function (v) {
+  v.addEventListener('error', function () { v.closest('figure').style.display = 'none'; });
+  if (v.error) v.closest('figure').style.display = 'none';
+});
+</script>
+</body>
+</html>

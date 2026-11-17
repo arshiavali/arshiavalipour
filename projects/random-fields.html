@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conditional spatial random fields for heterogeneous materials – Arshia Valipour</title>
+<meta name="description" content="Generating statistically equivalent virtual specimens from measured material property maps for Monte Carlo FE simulations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="../index.html">Arshia Valipour</a>
+  <ul>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#projects">Projects</a></li>
+    <li><a href="../index.html#experience">Experience</a></li>
+    <li><a href="../index.html#education">Education</a></li>
+    <li><a href="../index.html#publications">Publications</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</div></nav>
+<main class="wrap">
+<header class="project-head">
+  <a class="back" href="../index.html#projects">← All projects</a>
+  <div class="kicker" style="color:var(--warm);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px">Research assistant project</div>
+  <h1>Conditional spatial random fields for heterogeneous materials</h1>
+  <p class="context">Student research assistant · Chair of Computational Applied Mechanics, University of Wuppertal</p>
+  <div class="chips"><span class="chip">Python</span><span class="chip">GSTools</span><span class="chip">Geostatistics</span><span class="chip">Spatial random fields</span><span class="chip">Conditional simulation</span><span class="chip">Uncertainty quantification</span></div>
+  <div class="meta"><div><b>Tools</b>Python, GSTools</div><div><b>Methods</b>Geostatistics, variograms, conditional simulation</div><div><b>Used in</b>Monte Carlo FEM</div></div>
+</header>
+<figure class="media diagram portrait"><img src="../assets/img/random_field.png" alt="Spatially correlated random field map, coloured from about 38 to 63 (arbitrary units)."><figcaption>Example map of a local material property: the value varies from point to point in a spatially correlated way.</figcaption></figure>
+<article class="prose">
+<h2>Motivation</h2>
+<p>Many engineering and natural materials are not uniform. Their local material properties vary from point to point, and these variations govern the local strain field and therefore the overall mechanical response. Because neighbouring points tend to have similar values, the variations are spatially correlated. Classical statistics cannot describe this structure, whereas geostatistics was developed for exactly this kind of data.</p>
+<h2>Approach</h2>
+<ul>
+<li>Measured property maps were normalised with a <b>quantile transformation</b>, so non-Gaussian data could be described by Gaussian random fields.</li>
+<li>The spatial structure was captured with fitted <b>variogram models</b>.</li>
+<li><b>Conditional realisations</b> were generated: new, equally plausible property maps in which the distribution and spatial correlation of the real sample are preserved and the measured values are honoured.</li>
+<li>The <b>correlation between local material properties and local strain fields</b> measured on the same specimens was quantified.</li>
+</ul>
+</article>
+<figure class="media"><img src="../assets/img/random-fields.png" alt="Workflow from a smoothed property field, to a fitted covariance model, to empirical variograms of conditional realisations." loading="lazy"><figcaption>Workflow: a smoothed property field is used to fit a covariance (variogram) model, from which conditional realisations are generated. The empirical variograms of the realisations are compared with the reference field.</figcaption></figure>
+<article class="prose">
+<h2>Outcome</h2>
+<p>Each realisation is treated as a virtual specimen. When many of them are fed into Monte Carlo finite element simulations with an in-house stochastic finite element code, the effect of natural material variability on the mechanical behaviour is shown and the resulting uncertainty is quantified.</p>
+</article>
+<figure class="media"><video src="../assets/video/random-fields-realisations.mp4" autoplay muted loop playsinline controls preload="metadata"></video><figcaption>Animation: cycling through conditional realisations.</figcaption></figure>
+</main>
+<footer><div class="wrap">
+  <span>&copy; 2026 Arshia Valipour</span>
+  <span><a href="mailto:arshia.valipour@edu.ruhr-uni-bochum.de">Email</a> · <a href="https://www.linkedin.com/in/avalipour02">LinkedIn</a> · <a href="https://github.com/arshiavali">GitHub</a></span>
+</div></footer>
+<script>
+// Hide animation slots whose video file has not been added yet.
+document.querySelectorAll('figure.media video').forEach(function (v) {
+  v.addEventListener('error', function () { v.closest('figure').style.display = 'none'; });
+  if (v.error) v.closest('figure').style.display = 'none';
+});
+</script>
+</body>
+</html>

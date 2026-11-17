@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anisotropic plane-stress plasticity with FEniCSx and JAX – Arshia Valipour</title>
+<meta name="description" content="A compact finite element solver for anisotropic elasto-plasticity, with the constitutive update and its tangent obtained by automatic differentiation.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="../index.html">Arshia Valipour</a>
+  <ul>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#projects">Projects</a></li>
+    <li><a href="../index.html#publications">Publications</a></li>
+    <li><a href="../index.html#experience">Experience</a></li>
+    <li><a href="../index.html#mountains">Beyond</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</div></nav>
+<main class="wrap">
+<header class="project-head">
+  <a class="back" href="../index.html#projects">← All projects</a>
+  <div class="kicker" style="color:var(--warm);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px">Research assistant project · open source</div>
+  <h1>Anisotropic plane-stress plasticity with FEniCSx and JAX</h1>
+  <p class="context">Student research assistant · Chair of Computational Applied Mechanics, University of Wuppertal</p>
+  <div class="chips"><span class="chip">FEniCSx</span><span class="chip">JAX</span><span class="chip">Automatic differentiation</span><span class="chip">Return mapping</span><span class="chip">Hill48</span><span class="chip">Anisotropic plasticity</span></div>
+  <div class="meta"><div><b>Period</b>Apr 2025 – present</div><div><b>Libraries</b>FEniCSx (dolfinx), JAX, PETSc</div><div><b>Theory</b>Small-strain plane stress</div><div><b>Output</b>Field results, stress–strain curves</div></div>
+</header>
+<figure class="media"><img src="../assets/img/plasticity-stress-strain.png" alt="Example run: stress–strain curve of an orthotropic strip with Hill48 yield criterion." loading="lazy"><figcaption>Example run: stress–strain curve of an orthotropic strip with Hill48 yield criterion.</figcaption></figure>
+<article class="prose">
+<h2>Research assistant work</h2>
+<p>As a student research assistant at CAM, I worked on extending our in-house stochastic finite element code for materials with local property variations, such as paper. My work included:</p>
+<ul>
+<li><b>Plane-stress elasto-plasticity</b> with different yield criteria, including Hill's anisotropic criterion.</li>
+<li><b>Hardening models</b> for isotropic and kinematic hardening.</li>
+<li><b>Local variations:</b> additional spatially varying material parameters that can be driven by random fields.</li>
+</ul>
+<p>The in-house code is not public. The repository below is a standalone, open-source version of the plasticity part.</p>
+<h2>What it does</h2>
+<p>The code solves plane-stress elasto-plastic problems with the finite element method. A JSON input file defines the geometry, material and load case. The solver outputs field results over the load history, such as displacement, von Mises stress and equivalent plastic strain, together with the macroscopic stress–strain curve.</p>
+<h2>Material models</h2>
+<ul>
+<li><b>Elasticity:</b> isotropic or orthotropic, with a material orientation angle.</li>
+<li><b>Yield criteria:</b> von Mises or Hill48 for anisotropic plastic behaviour.</li>
+<li><b>Hardening:</b> isotropic (linear or power-law) and linear kinematic hardening.</li>
+</ul>
+<h2>How it works</h2>
+<ul>
+<li><b>Local level (JAX):</b> the constitutive update is an implicit return mapping solved with Newton's method at each integration point. The flow direction is obtained by automatic differentiation of the yield function, which makes it straightforward to add new yield criteria.</li>
+<li><b>Consistent tangent:</b> the algorithmic tangent is obtained by automatic differentiation instead of being derived by hand, which supports good convergence of the global Newton solver.</li>
+<li><b>Implementation:</b> the material update is compiled with <code>jax.jit</code> and vectorised over integration points with <code>jax.vmap</code>.</li>
+<li><b>Global level (FEniCSx):</b> a Newton–Raphson solver assembles the residual and Jacobian and solves the linear systems with PETSc.</li>
+</ul>
+<h2>Load cases</h2>
+<p>Tension, clamped tension and shear tests under displacement control. Results can be viewed in ParaView and exported as stress–strain curves.</p>
+<h2>What I took from it</h2>
+<p>Implementing plasticity at this level, rather than using a built-in material model in commercial software, requires understanding every step of a nonlinear FE solver, from the return mapping to the tangent and the global convergence.</p>
+</article>
+<figure class="media"><video src="../assets/video/plasticity-plastic-strain.mp4" autoplay muted loop playsinline controls preload="metadata"></video><figcaption>Animation: evolution of the equivalent plastic strain.</figcaption></figure>
+<div class="code-box"><span>💻</span><div><b>Code</b><br>Source code, an example input and documentation are available on GitHub. <br><a href="https://github.com/arshiavali/plane-stress-plasticity">View on GitHub →</a></div></div>
+</main>
+<footer><div class="wrap">
+  <span>&copy; 2026 Arshia Valipour</span>
+  <span><a href="mailto:arshia.valipour@edu.ruhr-uni-bochum.de">Email</a> · <a href="https://www.linkedin.com/in/avalipour02">LinkedIn</a> · <a href="https://github.com/arshiavali">GitHub</a></span>
+</div></footer>
+<script>
+// Hide animation slots whose video file has not been added yet.
+document.querySelectorAll('figure.media video').forEach(function (v) {
+  v.addEventListener('error', function () { v.closest('figure').style.display = 'none'; });
+  if (v.error) v.closest('figure').style.display = 'none';
+});
+</script>
+</body>
+</html>
